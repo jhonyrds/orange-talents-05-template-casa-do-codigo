@@ -23,7 +23,12 @@ public class AutorController {
     @PostMapping
     public ResponseEntity<AutorDto> cadastrar(@RequestBody @Valid AutorForm form){
         Autor autor = form.converter(autorRepository);
-        autorRepository.save(autor);
-        return ResponseEntity.ok().build();
+        boolean emailDuplicado = autorRepository.existsByEmail(autor.getEmail());
+        if(emailDuplicado == false) {
+            autorRepository.save(autor);
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.badRequest().build();
+
     }
 }
