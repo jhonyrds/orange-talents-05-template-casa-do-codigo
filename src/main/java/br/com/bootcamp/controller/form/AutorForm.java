@@ -2,6 +2,7 @@ package br.com.bootcamp.controller.form;
 
 import br.com.bootcamp.model.Autor;
 import br.com.bootcamp.repository.AutorRepository;
+import br.com.bootcamp.util.UniqueField;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -9,7 +10,7 @@ import org.hibernate.validator.constraints.NotBlank;
 public class AutorForm {
     @NotBlank
     private String nome;
-    @Email @NotBlank
+    @Email @NotBlank @UniqueField(entityName = Autor.class, fieldName = "email")
     private String email;
     @NotBlank @Length(max = 400)
     private String descricao;

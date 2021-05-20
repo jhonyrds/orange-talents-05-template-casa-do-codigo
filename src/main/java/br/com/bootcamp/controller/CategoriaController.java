@@ -22,12 +22,7 @@ public class CategoriaController {
     @PostMapping
     public ResponseEntity<CategoriaDto> cadastrar(@RequestBody @Valid CategoriaForm form){
         Categoria categoria = form.converte(categoriaRepository);
-        boolean categoriaDuplicada = categoriaRepository.existsByCategoria(categoria.getCategoria());
-        if(categoriaDuplicada == false) {
-            categoriaRepository.save(categoria);
-            return ResponseEntity.ok().build();
-        }
-        return ResponseEntity.badRequest().build();
-
+        categoriaRepository.save(categoria);
+        return ResponseEntity.ok().build();
     }
 }

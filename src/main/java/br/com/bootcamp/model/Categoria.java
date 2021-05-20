@@ -12,6 +12,9 @@ public class Categoria {
     @NotBlank
     private String categoria;
 
+    @Deprecated
+    public Categoria(){}
+
     public Categoria(String categoria) {
 
         this.categoria = categoria;
