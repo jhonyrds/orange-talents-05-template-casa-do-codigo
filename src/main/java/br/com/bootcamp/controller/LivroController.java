@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.EntityManager;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -34,5 +35,14 @@ public class LivroController {
     public ResponseEntity listar(){
         List<LivroProjecao> list = livroRepository.findAllBy();
         return ResponseEntity.ok().body(list);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<LivroDto> detalhar(@PathVariable Long id){
+        Optional<Livro> livro = livroRepository.findById(id);
+        if(livro.isPresent()){
+            return ResponseEntity.ok(new LivroDto(livro.get()));
+        }
+        return ResponseEntity.notFound().build();
     }
 }
