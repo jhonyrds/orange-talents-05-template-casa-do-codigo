@@ -2,8 +2,6 @@ package br.com.bootcamp.controller.dto;
 
 import br.com.bootcamp.model.Categoria;
 
-import javax.persistence.Column;
-
 public class CategoriaDto {
 
     private Long id;

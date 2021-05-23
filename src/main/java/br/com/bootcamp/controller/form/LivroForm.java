@@ -13,8 +13,6 @@ import javax.persistence.EntityManager;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.Optional;
-
 
 public class LivroForm {
     @NotBlank
